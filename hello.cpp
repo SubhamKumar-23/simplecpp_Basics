@@ -309,9 +309,3 @@
     }
     getClick();
 }*/
-
-main_program{
-    int i=1,n;
-    cout<<"Enter a number";
-    cin >> n;
-}
