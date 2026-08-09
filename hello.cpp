@@ -309,3 +309,11 @@
     }
     getClick();
 }*/
+
+//sum of two numbers
+main_program{
+    int a,b;
+    cout << "Enter two numbers: ";
+    cin >> a >> b;
+    cout << "Sum of two numbers is: " << a+b;
+}
