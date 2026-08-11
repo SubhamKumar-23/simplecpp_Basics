@@ -366,17 +366,53 @@
 }*/
 
 //binary pgrm without using bitset
-main_program{
-    int a,b,n=7;
-    cin >> a >> b;
-
-        for(int i =1;i <=8 ;i++ , n--)
-            if((int)(a/pow(2,n))==0)
-                cout <<"0";
-            else{
-                cout << "1";
-                a=(int)(a/pow(2,n));
-            }
-    
+void binary(int a){
+    int n=7;
+    for(int i =1;i <=8 ;i++ , n--)
+        if((int)(a/pow(2,n))==0)
+            cout <<"0";
+        else{
+            cout << "1";
+            a-=pow(2,n);
+        }
 }
+void n_binary(int a){
+    int n=7;
+    a= abs(a);
+    for(int i =1;i <=8 ;i++ , n--)
+        if((int)(a/pow(2,n))==0)
+            cout <<"1";
+        else{
+            cout << "0";
+            a-=pow(2,n);
+        }
+}
+/*main_program{
+    int a,b,sum;
+    cin >> a >> b;
+    sum = a+b;
+
+    //binary for a
+    if(a>=0)
+        binary(a);
+    else
+        n_binary(a);
+    
+    cout << "\n";
+
+    //binary for b
+    if(b>=0)
+        binary(b);
+    else
+        n_binary(b);
+    
+    cout << "\n";
+
+    //binary for sum
+    if(sum>=0)
+        binary(sum);
+    else
+        n_binary(sum);
+    
+}*/
 
