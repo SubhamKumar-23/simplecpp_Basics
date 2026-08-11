@@ -215,7 +215,7 @@
 }*/
 
 //Corner Pattern
-main_program{
+/*main_program{
     int n;
     cout<<"Enter a number";
     cin>>n;
@@ -234,7 +234,7 @@ main_program{
         left(360/n);
     }
     getClick();
-}
+}*/
 
 //circle of box
 /*main_program{
@@ -310,10 +310,73 @@ main_program{
     getClick();
 }*/
 
-//sum of two numbers
+//multiplication of 2x2 matrix
+/*main_program{
+    int a,b,c,d; //matrix 1
+    int a1,b1,c1,d1; //matrix 2
+    cin >> a >> b >> c >> d >> a1>> b1>> c1>> d1 ;
+    cout << a*a1 + b*c1 << "  " << a*b1 + b*d1 << "\n";
+    cout << c*a1 + d*c1 << "  " << c*b1 + d*d1 ;
+}*/
+
+//Wallis Product
+/*main_program{
+    double n,m=1.0;
+    cin >> n;
+    repeat(int(n)%2==0){
+        repeat(n/2){
+            m*=(n/(n+1));
+            m=m*(n/(n-1));
+            n-=2;
+        }
+        cout << m*2 ;
+        return(0);
+    }
+    cout << "Invalid input! Please enter even number";
+}*/
+
+//PnC
+/*main_program{
+    int n,r,n1=1,m1=1,m,r1=1;
+    cin >> n >> r;
+    m=n-r;
+    repeat(n){
+        n1*=n;
+        n--;
+    }
+    repeat(m){
+        m1*= m;
+        m--;
+    }
+    repeat(r){
+        r1*= r;
+        r--;
+    }
+    cout << n1/m1 << "  " << n1/(r1*m1) ;
+}*/
+
+//binary pgrm using bitset
 /*main_program{
     int a,b;
-    cout << "Enter two numbers: ";
     cin >> a >> b;
-    cout << "Sum of two numbers is: " << a+b;
+    cout << bitset<8>(a) << "\n";
+    cout << bitset<8>(b) << "\n";
+    cout << bitset<8>(a+b) << "\n";
+    cout << a+b << "\n";
 }*/
+
+//binary pgrm without using bitset
+main_program{
+    int a,b,n=7;
+    cin >> a >> b;
+
+        for(int i =1;i <=8 ;i++ , n--)
+            if((int)(a/pow(2,n))==0)
+                cout <<"0";
+            else{
+                cout << "1";
+                a=(int)(a/pow(2,n));
+            }
+    
+}
+
