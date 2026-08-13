@@ -1,7 +1,6 @@
 #include <simplecpp>
 main_program{
     int a,b,n=8,sum,s;
-    //signed long ab=0 , bb=0;
     cin >> a >> b;
     sum = a+b;
     s =sum;
