@@ -365,54 +365,39 @@
     cout << a+b << "\n";
 }*/
 
-//binary pgrm without using bitset
-void binary(int a){
-    int n=7;
-    for(int i =1;i <=8 ;i++ , n--)
-        if((int)(a/pow(2,n))==0)
-            cout <<"0";
-        else{
-            cout << "1";
-            a-=pow(2,n);
-        }
-}
-void n_binary(int a){
-    int n=7;
-    a= abs(a);
-    for(int i =1;i <=8 ;i++ , n--)
-        if((int)(a/pow(2,n))==0)
-            cout <<"1";
-        else{
-            cout << "0";
-            a-=pow(2,n);
-        }
-}
+//Equation solver
 /*main_program{
-    int a,b,sum;
-    cin >> a >> b;
-    sum = a+b;
-
-    //binary for a
-    if(a>=0)
-        binary(a);
-    else
-        n_binary(a);
-    
-    cout << "\n";
-
-    //binary for b
-    if(b>=0)
-        binary(b);
-    else
-        n_binary(b);
-    
-    cout << "\n";
-
-    //binary for sum
-    if(sum>=0)
-        binary(sum);
-    else
-        n_binary(sum);
-    
+    float a1,b1,c1,a2,c2,b2;
+    cin >> a1 >> b1 >> c1 ;
+    cin >> a2 >> b2 >> c2 ;
+    cout << "x = " << (c2*b1 - c1 *b2)/ (a1*b2 - a2*b1) <<"\n";
+    cout << "y = " << (c2*a1 - c1*a2)/(b1*a2-b2*a1);
 }*/
 
+//pi-value
+/*main_program{
+    int n; double pi=0,m=1,p=0;
+    cin >> n;
+
+    repeat(n){
+        pi += pow(-1,p)*(1/m);
+        m+=2;
+        p++;
+    }
+
+    cout << pi*4;
+}*/
+
+//harmonic series
+/*main_program{
+    double n,a,d;
+    cout << "Enter the number of terms: \n"; cin >> n;
+    cout << "Enter the denominator of the first term: \n"; cin >> a;
+    cout << "Enter the difference between successive terms denominators: \n"; cin >> d;
+    float sum=0;
+    repeat(n){
+        sum+= 1/a ;
+        a+=d;
+    }
+    cout << "The sum is: " << sum ;
+}*/
