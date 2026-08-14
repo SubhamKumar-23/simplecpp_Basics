@@ -23,9 +23,7 @@ main_program{
                 a-=pow(2,n);
             }
     }
-
     cout << "\n";
-
     if(b>=0){
         for(n=7; n >=0 ; n--)
             if((int)(b/pow(2,n))==0)
@@ -45,9 +43,7 @@ main_program{
                 b-=pow(2,n);
             }
     }
-
     cout << "\n";
-
     if(s>=0){
         for(n=7; n >=0 ; n--)
             if((int)(s/pow(2,n))==0)
