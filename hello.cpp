@@ -1,5 +1,6 @@
 #include <simplecpp>
-
+#include <iostream>
+using namespace std; 
 //square inside square && Dashed lines
 /*main_program{
     //square inside square
@@ -401,3 +402,6 @@
     }
     cout << "The sum is: " << sum ;
 }*/
+
+
+
