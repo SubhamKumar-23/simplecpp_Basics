@@ -229,44 +229,64 @@ string getRandomWord() {
 void rowColn(int a[][13],int y,int x,int n){
     int i;
     for(i=0;i<n;i++)
-        a[i][x]=1;
+        if(a[i][x]!=2)
+            a[i][x]=1;
     for(i=0;i<n;i++)
-        a[y][i]=1;
+        if(a[y][i]!=2)
+            a[y][i]=1;
 }
+
 void diag(int a[][13],int y, int x,int n){
     int i;
     for(i=0;i<12;i++){
-        if(y+i < 13 && x+i <13)
+        if(y+i < 13 && x+i <13 && a[y+i][x+i]!=2)
             a[y+i][x+i] = 1;
-        if(y-i >= 0 && x-i >= 0)
+        if(y-i >= 0 && x-i >= 0 && a[y-i][x-i]!=2)
             a[y-i][x-i] = 1;
-        if(y-i >= 0 && x+i < 13)
+        if(y-i >= 0 && x+i < 13 && a[y-i][x+i]!=2)
             a[y-i][x+i] =1;
-        if(y+i < 13 && x-i >= 0)
+        if(y+i < 13 && x-i >= 0 && a[y+i][x-i]!=2)
             a[y+i][x-i] = 1;
     }
 }
 
 int main(){
-    int n,i,j,q;
+    int n,i,j,q=0,k,l;
     std::cin >> n;
     int a[13][13];
-    for(i=0;i<13;i++)
-        for(j=0;j<13;j++)
-            a[i][j]=0;
-    /*for(i=0;i<n;i++)
-        for(j=0;j<n;j++){
-            a[j][i]=2;
-            q++;
-            rowColn(a,j,i,n);
-            diag(a,j,i,n);
-        }*/
-    j=2;i=2;
-    rowColn(a,j,i,n);
-    diag(a,j,i,n);
-    for(i=0;i<n;i++){
-        for(j=0;j<n;j++)
-            std::cout << a[i][j] << " ";
-        std::cout << std::endl;
-    } 
+    int queen[n];
+    for(l=0;l<n;l++){
+        for(i=0;i<13;i++)
+            for(j=0;j<13;j++)
+                a[i][j]=0;
+        a[l][0]=2;
+        rowColn(a,l,0,n);
+        diag(a,l,0,n);
+        for(k=0;k<n;k++)
+            queen[k]=0;
+        q=0;
+        for(i=0;i<n;i++){
+            for(j=0;j<n;j++)
+                if(a[j][i]==0 && i!=0){
+                    a[j][i]=2;
+                    q++;
+                    rowColn(a,j,i,n);
+                    diag(a,j,i,n);
+                    break;
+            }
+
+            //chess board print
+            for(k=0;k<n;k++){
+                for(j=0;j<n;j++)
+                    std::cout << a[k][j];
+                std::cout << std::endl;
+            }
+            std::cout << std::endl;
+        }
+        if(q==n){
+            for(k=0;k<n;k++)
+                std::cout << queen[k];
+            std::cout << std::endl;
+        }
+    }
 }
