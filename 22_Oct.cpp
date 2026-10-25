@@ -1,5 +1,5 @@
  #include <iostream>
-//PGRM1
+//PGRM1 DONE
 /*int main(){
     int r,c,i,j,max,min,e=0;
     std::cin >> r >> c;
@@ -26,7 +26,7 @@
     }
 }*/
 
-//PGRM5 
+//PGRM5 DONE
 /*int main(){
     int n,i,j;
     std::cin >> n;
@@ -36,21 +36,19 @@
     for(int k=0;k<n;k++)
         for(i=0;i<n-1;i++)
             for(j=0;j<n;j++)
-                if(c[i][j]=='\0' || c[i+1][j]=='\0'){
-                    
+                if(c[i][j]=='\0' || c[i+1][j]=='\0')
                     break;
-                }else if(c[i][j]>c[i+1][j]){
+                else if(c[i][j]>c[i+1][j]){
                     std::swap(c[i+1],c[i]);
                     break;
-                }else if(c[i][j] < c[i+1][j]){
+                }else if(c[i][j] < c[i+1][j])
                     break;
-                }
     for(i=0;i<n;i++)
             std::cout << c[i] << "\n";
     
 }*/
 
-//PGRM6 
+//PGRM6 DONE
 /*#include <iostream>
 #include <fstream>
 #include <cstdlib>
@@ -225,68 +223,88 @@ string getRandomWord() {
 }*/
 
 //PGRM2
-
-void rowColn(int a[][13],int y,int x,int n){
-    int i;
-    for(i=0;i<n;i++)
-        if(a[i][x]!=2)
-            a[i][x]=1;
-    for(i=0;i<n;i++)
-        if(a[y][i]!=2)
-            a[y][i]=1;
-}
-
-void diag(int a[][13],int y, int x,int n){
-    int i;
-    for(i=0;i<12;i++){
-        if(y+i < 13 && x+i <13 && a[y+i][x+i]!=2)
-            a[y+i][x+i] = 1;
-        if(y-i >= 0 && x-i >= 0 && a[y-i][x-i]!=2)
-            a[y-i][x-i] = 1;
-        if(y-i >= 0 && x+i < 13 && a[y-i][x+i]!=2)
-            a[y-i][x+i] =1;
-        if(y+i < 13 && x-i >= 0 && a[y+i][x-i]!=2)
-            a[y+i][x-i] = 1;
-    }
-}
-
 int main(){
-    int n,i,j,q=0,k,l;
+    int n,c=0,i;
+    bool check;
     std::cin >> n;
-    int a[13][13];
     int queen[n];
-    for(l=0;l<n;l++){
-        for(i=0;i<13;i++)
-            for(j=0;j<13;j++)
-                a[i][j]=0;
-        a[l][0]=2;
-        rowColn(a,l,0,n);
-        diag(a,l,0,n);
-        for(k=0;k<n;k++)
-            queen[k]=0;
-        q=0;
-        for(i=0;i<n;i++){
-            for(j=0;j<n;j++)
-                if(a[j][i]==0 && i!=0){
-                    a[j][i]=2;
-                    q++;
-                    rowColn(a,j,i,n);
-                    diag(a,j,i,n);
-                    break;
-            }
-
-            //chess board print
-            for(k=0;k<n;k++){
-                for(j=0;j<n;j++)
-                    std::cout << a[k][j];
-                std::cout << std::endl;
-            }
-            std::cout << std::endl;
+    queen[c]=0;
+    while(c>=0){
+        queen[c]++;
+        if(queen[c] > n){
+            c--;
+            continue;
         }
-        if(q==n){
-            for(k=0;k<n;k++)
-                std::cout << queen[k];
+        check = true;
+        for(i=0;i<c;i++)
+            if(queen[i] == queen[c] || queen[i]-queen[c] == c-i || queen[i]-queen[c] == i-c){
+                check = false;
+                break;
+            }
+        if(!check) continue;
+        if(c == n-1){
+            for(i=0;i<n;i++)
+                std::cout << queen[i] << " ";
             std::cout << std::endl;
+        }else{
+            c++;
+            queen[c]= 0;
         }
     }
 }
+
+//PGRM4 DONE
+/*int main(){
+    int i,j,m,n,sum,p,q,k,l;
+    std::cin >> m >> n;
+    int a[m][n];
+    for(i=0;i<m;i++)
+        for(j=0;j<n;j++)
+            std::cin >> a[i][j];
+    std::cin >> p >> q;
+    for(k=0,l=0;k<m-p+1;){
+        sum=0;
+        for(i=k;i<(p+k);i++)
+            for(j=l;j<(q+l);j++)
+                sum+=a[i][j];
+        if(l==(n-q)){
+            l=0;
+            k++;
+        }else l++;
+        std::cout << sum << " ";
+    }
+}*/
+
+//PGRM3 DONE
+/*int main(){
+    int i,j,m,n,k,x,y,count;
+    std::cin >> m >> n >> k;
+    int a[m][n];
+    for(i=0;i<m;i++)
+        for(j=0;j<n;j++)
+            a[i][j]=0;
+    for(i=0;i<k;i++){
+        std::cin >> x >> y;
+        a[x-1][y-1]=-1; // -1 = mine(bomb)
+    }   
+    for(i=0;i<m;i++)
+        for(j=0;j<n;j++)
+            if(a[i][j]!=-1){
+                count = 0;
+                if(a[i][j-1]== -1 && j-1 >=0) count++;
+                if(a[i][j+1]== -1 && j+1 < n) count++;
+                if(a[i+1][j]==-1 && i+1 < m) count++;
+                if(a[i-1][j]==-1 && i-1 >=0) count++;
+                if(a[i+1][j+1] == -1 && i+1 <m && j+1 <n) count++;
+                if(a[i-1][j+1] == -1 && i-1 >=0 && j+1 <n) count++;
+                if(a[i+1][j-1]==-1&& i+1<m && j-1 >=0) count++;
+                if(a[i-1][j-1]==-1&& i-1>=0 && j-1 >=0) count++;
+                a[i][j] = count;
+            }
+    for(i=0;i<m;i++){
+        for(j=0;j<n;j++)
+            (a[i][j] == -1)?std::cout << "M " : std::cout << a[i][j] << " ";
+        std::cout << std::endl;
+    }
+}*/
+
